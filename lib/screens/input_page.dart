@@ -33,10 +33,13 @@ class _InputPageState extends State<InputPage> {
   void _incrementAge() => setState(() => _age++);
 
   void _calculateBmi() {
+    CalculatorBrain calc = CalculatorBrain(height: _height, weight: _weight);
+    calc.calculateBMI();
+
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const ResultPage(),
+          builder: (context) => ResultPage(bmiResult: calc),
         ));
   }
 

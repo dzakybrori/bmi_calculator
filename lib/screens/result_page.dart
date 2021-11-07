@@ -5,7 +5,9 @@ const kUnderWeightColor = Color(0xFF88ABFE);
 const kOverWeightColor = Color(0xFFFF897A);
 
 class ResultPage extends StatelessWidget {
-  const ResultPage({Key? key}) : super(key: key);
+  final CalculatorBrain bmiResult;
+
+  const ResultPage({Key? key, required this.bmiResult}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +35,12 @@ class ResultPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Spacer(flex: 3),
-                          Text('NORMAL',
+                          Text(bmiResult.getResult(),
                               textScaleFactor: context.ts,
-                              style: context.text.headline6
-                                  ?.copyWith(color: kNormalWeightColor)),
+                              style: context.text.headline6?.copyWith(
+                                  color: bmiResult.getResultColor())),
                           const Spacer(),
-                          Text('22.1',
+                          Text(bmiResult.calculateBMI(),
                               textScaleFactor: context.ts,
                               style: context.text.headline1),
                           const Spacer(),
@@ -58,7 +60,8 @@ class ResultPage extends StatelessWidget {
                             maxLines: 2,
                           ),
                           const Spacer(),
-                          Text('You have a normal body\nweight. Good job!',
+                          Text(bmiResult.getInterpretation(),
+                              maxLines: 2,
                               textScaleFactor: context.ts,
                               textAlign: TextAlign.center,
                               style: context.text.subtitle1
