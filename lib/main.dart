@@ -19,13 +19,13 @@ class BMICalculator extends StatelessWidget {
         focusColor: Colors.white.withOpacity(0.15),
         disabledColor: Colors.white.withOpacity(0.08),
         colorScheme: ThemeData.dark().colorScheme.copyWith(
-              primary: const Color(0xFF0A0E21),
               secondary: const Color(0xFFFF0067),
               // for Surface
               background: Colors.white.withOpacity(0.08),
               // AppBarColor
               surface: const Color(0xFF0B1033),
-              onSurface: Colors.white54,
+              onSurface: Colors.white,
+              onBackground: Colors.white.withOpacity(0.9),
             ),
         sliderTheme: ThemeData.dark().sliderTheme.copyWith(
               thumbColor: const Color(0xFFFF0067),
@@ -42,13 +42,21 @@ class BMICalculator extends StatelessWidget {
                 primary: const Color(0xFFFF0067),
                 textStyle: const TextStyle(fontSize: 16, letterSpacing: 1))),
         textTheme: ThemeData.dark().textTheme.copyWith(
+              headline1: ThemeData.dark().textTheme.headline1?.copyWith(
+                    fontSize: 90,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white.withOpacity(0.9),
+                  ),
               headline2: ThemeData.dark().textTheme.headline2?.copyWith(
                   fontWeight: FontWeight.w900,
+                  color: Colors.white.withOpacity(0.9)),
+              headline3: ThemeData.dark().textTheme.headline3?.copyWith(
+                  fontWeight: FontWeight.bold,
                   color: Colors.white.withOpacity(0.9)),
               headline6: ThemeData.dark()
                   .textTheme
                   .headline6
-                  ?.copyWith(letterSpacing: 0.5),
+                  ?.copyWith(fontSize: 18, letterSpacing: 0.5),
               subtitle1: const TextStyle(
                   fontSize: 16,
                   color: Colors.white54,

@@ -5,3 +5,4 @@ import '../components/components.dart';
 import '../extensions.dart';
 
 part 'input_page.dart';
+part 'result_page.dart';

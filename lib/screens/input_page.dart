@@ -18,11 +18,26 @@ class _InputPageState extends State<InputPage> {
   @override
   void setState(VoidCallback fn) => (mounted) ? super.setState(fn) : fn();
 
-  void toggleSelectedGender(Gender gender) {
+  void _toggleSelectedGender(Gender gender) {
     if (gender != _selectedGender) {
       setState(() => _selectedGender =
           (_selectedGender == Gender.male) ? Gender.female : Gender.male);
     }
+  }
+
+  void _changeHeight(double value) => setState(() => _height = value.round());
+
+  void _decrementWeight() => setState(() => _weight--);
+  void _incrementWeight() => setState(() => _weight++);
+  void _decrementAge() => setState(() => _age--);
+  void _incrementAge() => setState(() => _age++);
+
+  void _calculateBmi() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const ResultPage(),
+        ));
   }
 
   @override
@@ -31,32 +46,35 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
           centerTitle: true,
           title: Text('BMI CALCULATOR', textScaleFactor: context.ts)),
-      body: Column(
-        children: [
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(
-                  right: context.dp(18),
-                  left: context.dp(18),
-                  bottom: context.dp(18)),
-              child: Column(
-                children: [
-                  _buildGenderSection(),
-                  _buildHeightSection(context),
-                  _buildWeightAndAgeSection(),
-                ],
-              ),
+      body: _buildBody(context),
+    );
+  }
+
+  Column _buildBody(BuildContext context) {
+    return Column(
+      children: [
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.only(
+                right: context.dp(18),
+                left: context.dp(18),
+                bottom: context.dp(18)),
+            child: Column(
+              children: [
+                _buildGenderSection(),
+                _buildHeightSection(context),
+                _buildWeightAndAgeSection(),
+              ],
             ),
           ),
-          SizedBox(
-              width: double.infinity,
-              height: context.h(80),
-              child: ElevatedButton(
-                  onPressed: () {},
-                  child:
-                      Text('CALCULATE YOUR BMI', textScaleFactor: context.ts)))
-        ],
-      ),
+        ),
+        SizedBox(
+            width: double.infinity,
+            height: context.h(80),
+            child: ElevatedButton(
+                onPressed: _calculateBmi,
+                child: Text('CALCULATE YOUR BMI', textScaleFactor: context.ts)))
+      ],
     );
   }
 
@@ -69,16 +87,16 @@ class _InputPageState extends State<InputPage> {
             child: CounterCard(
               label: 'WEIGHT',
               value: _weight,
-              onDecrement: () => setState(() => _weight--),
-              onIncrement: () => setState(() => _weight++),
+              onDecrement: _decrementWeight,
+              onIncrement: _incrementWeight,
             ),
           ),
           Expanded(
             child: CounterCard(
               label: 'AGE',
               value: _age,
-              onDecrement: () => setState(() => _age--),
-              onIncrement: () => setState(() => _age++),
+              onDecrement: _decrementAge,
+              onIncrement: _incrementAge,
             ),
           ),
         ],
@@ -111,7 +129,7 @@ class _InputPageState extends State<InputPage> {
               value: _height.toDouble(),
               min: 130.0,
               max: 220.0,
-              onChanged: (value) => setState(() => _height = value.round()),
+              onChanged: _changeHeight,
             )
           ],
         ),
@@ -126,13 +144,13 @@ class _InputPageState extends State<InputPage> {
         children: [
           Expanded(
               child: GenderButton(
-                  onTap: () => toggleSelectedGender(Gender.male),
+                  onTap: () => _toggleSelectedGender(Gender.male),
                   isSelected: _selectedGender == Gender.male,
                   icon: FontAwesomeIcons.mars,
                   label: 'MALE')),
           Expanded(
               child: GenderButton(
-                  onTap: () => toggleSelectedGender(Gender.female),
+                  onTap: () => _toggleSelectedGender(Gender.female),
                   isSelected: _selectedGender == Gender.female,
                   icon: FontAwesomeIcons.venus,
                   label: 'FEMALE')),
