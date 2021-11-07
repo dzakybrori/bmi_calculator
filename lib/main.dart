@@ -20,7 +20,6 @@ class BMICalculator extends StatelessWidget {
         disabledColor: Colors.white.withOpacity(0.08),
         colorScheme: ThemeData.dark().colorScheme.copyWith(
               primary: const Color(0xFF0A0E21),
-              primaryVariant: const Color(0xFF0A0E21),
               secondary: const Color(0xFFFF0067),
               background: Colors.white.withOpacity(0.08),
               // for Surface Active
@@ -31,10 +30,18 @@ class BMICalculator extends StatelessWidget {
                 primary: const Color(0xFFFF0067),
                 textStyle: const TextStyle(fontSize: 16, letterSpacing: 1))),
         textTheme: ThemeData.dark().textTheme.copyWith(
+              headline2: ThemeData.dark().textTheme.headline2?.copyWith(
+                  fontWeight: FontWeight.w900,
+                  color: Colors.white.withOpacity(0.9)),
               headline6: ThemeData.dark()
                   .textTheme
                   .headline6
-                  ?.copyWith(letterSpacing: 0.4),
+                  ?.copyWith(letterSpacing: 0.5),
+              subtitle1: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.white54,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 0.5),
               button:
                   ThemeData.dark().textTheme.button?.copyWith(letterSpacing: 1),
             ),
