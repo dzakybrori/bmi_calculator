@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-import './extensions.dart';
+part of 'wrapper.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -13,21 +11,27 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title: const Text('BMI CALCULATOR')),
+      appBar: AppBar(
+          centerTitle: true,
+          title: Text('BMI CALCULATOR', textScaleFactor: context.ts)),
       body: Column(
         children: [
           Expanded(
             child: Row(
-              children: [
-                Expanded(child: CustomCard()),
-                Expanded(child: CustomCard()),
+              children: const [
+                Expanded(
+                    child: GenderButton(
+                        icon: FontAwesomeIcons.mars, label: 'MALE')),
+                Expanded(
+                    child: GenderButton(
+                        icon: FontAwesomeIcons.venus, label: 'FEMALE')),
               ],
             ),
           ),
-          Expanded(child: CustomCard()),
+          const Expanded(child: CustomCard()),
           Expanded(
             child: Row(
-              children: [
+              children: const [
                 Expanded(child: CustomCard()),
                 Expanded(child: CustomCard()),
               ],
@@ -37,28 +41,6 @@ class _InputPageState extends State<InputPage> {
       ),
       floatingActionButton:
           FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add)),
-    );
-  }
-}
-
-class CustomCard extends StatelessWidget {
-  final Color? color;
-  final Widget? child;
-
-  const CustomCard({
-    Key? key,
-    this.color,
-    this.child,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(context.dp(14)),
-      decoration: BoxDecoration(
-          color: color ?? context.background,
-          borderRadius: BorderRadius.circular(10)),
-      child: child,
     );
   }
 }

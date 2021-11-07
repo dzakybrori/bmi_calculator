@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of 'wrapper.dart';
 
 // Mockup design size
 const mockupHeight = 812;
