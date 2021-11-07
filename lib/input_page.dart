@@ -16,7 +16,6 @@ class _InputPageState extends State<InputPage> {
   void setState(VoidCallback fn) => (mounted) ? super.setState(fn) : fn();
 
   void toggleSelectedGender(Gender gender) {
-    // gender 1 is male and 2 is female
     if (gender != selectedGender) {
       setState(() => selectedGender =
           (selectedGender == Gender.male) ? Gender.female : Gender.male);
