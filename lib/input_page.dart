@@ -8,6 +8,18 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  int selectedGender = 1;
+
+  @override
+  void setState(VoidCallback fn) => (mounted) ? super.setState(fn) : fn();
+
+  void toggleSelectedGender(int gender) {
+    // gender 1 is male and 2 is female
+    if (gender != selectedGender) {
+      setState(() => selectedGender = (selectedGender == 1) ? 2 : 1);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,15 +32,19 @@ class _InputPageState extends State<InputPage> {
           children: [
             Expanded(
               child: Row(
-                children: const [
+                children: [
                   Expanded(
                       child: GenderButton(
-                          isSelected: true,
+                          onTap: () => toggleSelectedGender(1),
+                          isSelected: selectedGender == 1,
                           icon: FontAwesomeIcons.mars,
                           label: 'MALE')),
                   Expanded(
                       child: GenderButton(
-                          icon: FontAwesomeIcons.venus, label: 'FEMALE')),
+                          onTap: () => toggleSelectedGender(2),
+                          isSelected: selectedGender == 2,
+                          icon: FontAwesomeIcons.venus,
+                          label: 'FEMALE')),
                 ],
               ),
             ),

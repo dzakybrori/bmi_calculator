@@ -16,15 +16,18 @@ class BMICalculator extends StatelessWidget {
       title: 'BMI Calculator',
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: const Color(0xFF0B1033),
-        focusColor: Colors.white12,
+        focusColor: Colors.white.withOpacity(0.15),
         disabledColor: Colors.white.withOpacity(0.08),
         colorScheme: ThemeData.dark().colorScheme.copyWith(
               primary: const Color(0xFF0A0E21),
               primaryVariant: const Color(0xFF0A0E21),
               secondary: const Color(0xFFFF0067),
-              background: Colors.white.withOpacity(0.08), // for Surface Active
+              background: Colors.white.withOpacity(0.08),
+              // for Surface Active
               surface: const Color(0xFF0B1033), // AppBarColor
             ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(primary: const Color(0xFFFF0067))),
       ),
       home: const InputPage(),
     );

@@ -4,12 +4,14 @@ class GenderButton extends StatelessWidget {
   final IconData icon;
   final String label;
   final bool isSelected;
+  final VoidCallback onTap;
 
   const GenderButton(
       {Key? key,
       required this.icon,
       required this.label,
-      this.isSelected = false})
+      this.isSelected = false,
+      required this.onTap})
       : super(key: key);
 
   @override
@@ -18,7 +20,7 @@ class GenderButton extends StatelessWidget {
       padding: EdgeInsets.symmetric(
           horizontal: context.dp(4), vertical: context.dp(8)),
       child: InkWell(
-        onTap: () {},
+        onTap: onTap,
         borderRadius: BorderRadius.circular(10),
         child: CustomCard(
           margin: EdgeInsets.zero,
@@ -29,7 +31,7 @@ class GenderButton extends StatelessWidget {
               Icon(icon,
                   color: isSelected
                       ? Colors.white.withOpacity(0.89)
-                      : Colors.white70,
+                      : Colors.white60,
                   size: context.dp(80)),
               SizedBox(height: context.dp(15)),
               Text(label,
