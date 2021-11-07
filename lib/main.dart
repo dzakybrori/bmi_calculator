@@ -21,15 +21,17 @@ class BMICalculator extends StatelessWidget {
         colorScheme: ThemeData.dark().colorScheme.copyWith(
               primary: const Color(0xFF0A0E21),
               secondary: const Color(0xFFFF0067),
+              // for Surface
               background: Colors.white.withOpacity(0.08),
-              // for Surface Active
-              surface: const Color(0xFF0B1033), // AppBarColor
+              // AppBarColor
+              surface: const Color(0xFF0B1033),
+              onSurface: Colors.white54,
             ),
         sliderTheme: ThemeData.dark().sliderTheme.copyWith(
               thumbColor: const Color(0xFFFF0067),
               valueIndicatorColor: Colors.white,
               activeTrackColor: Colors.white,
-              inactiveTrackColor: Colors.white.withOpacity(0.15),
+              inactiveTrackColor: Colors.white30,
               trackHeight: 1.0,
               thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10),
               overlayColor: const Color(0xFFFF0067).withOpacity(0.3),

@@ -41,9 +41,37 @@ class _InputPageState extends State<InputPage> {
                   Expanded(
                     flex: 9,
                     child: Row(
-                      children: const [
-                        Expanded(child: CustomCard()),
-                        Expanded(child: CustomCard()),
+                      children: [
+                        Expanded(
+                          child: CustomCard(
+                            padding: EdgeInsets.all(context.dp(12)),
+                            child: FittedBox(
+                              child: Column(
+                                children: [
+                                  Text('WEIGHT',
+                                      textScaleFactor: context.ts,
+                                      style: context.text.subtitle1),
+                                  Text('60',
+                                      textScaleFactor: context.ts,
+                                      style: context.text.headline2),
+                                  Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        CircleIconButton(
+                                            icon: FontAwesomeIcons.minus,
+                                            onPressed: () {}),
+                                        SizedBox(width: context.dp(10)),
+                                        CircleIconButton(
+                                            icon: FontAwesomeIcons.plus,
+                                            onPressed: () {}),
+                                      ]),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        const Expanded(child: CustomCard()),
                       ],
                     ),
                   ),
@@ -65,9 +93,10 @@ class _InputPageState extends State<InputPage> {
 
   Expanded _buildHeightSection(BuildContext context) {
     return Expanded(
-      flex: 10,
+      flex: 9,
       child: CustomCard(
-        padding: EdgeInsets.all(context.dp(12)),
+        padding: EdgeInsets.only(
+            top: context.dp(12), right: context.dp(12), left: context.dp(12)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -79,8 +108,7 @@ class _InputPageState extends State<InputPage> {
                   children: [
                     TextSpan(text: '\tcm', style: context.text.subtitle1)
                   ],
-                  style: context.text.headline2
-                      ?.copyWith(fontWeight: FontWeight.w800)),
+                  style: context.text.headline2),
               textScaleFactor: context.ts,
               maxLines: 1,
             ),
@@ -98,7 +126,7 @@ class _InputPageState extends State<InputPage> {
 
   Expanded _buildGenderSection() {
     return Expanded(
-      flex: 9,
+      flex: 8,
       child: Row(
         children: [
           Expanded(
