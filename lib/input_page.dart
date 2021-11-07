@@ -14,32 +14,35 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
           centerTitle: true,
           title: Text('BMI CALCULATOR', textScaleFactor: context.ts)),
-      body: Column(
-        children: [
-          Expanded(
-            child: Row(
-              children: const [
-                Expanded(
-                    child: GenderButton(
-                        isSelected: true,
-                        icon: FontAwesomeIcons.mars,
-                        label: 'MALE')),
-                Expanded(
-                    child: GenderButton(
-                        icon: FontAwesomeIcons.venus, label: 'FEMALE')),
-              ],
+      body: Padding(
+        padding: EdgeInsets.all(context.dp(18)),
+        child: Column(
+          children: [
+            Expanded(
+              child: Row(
+                children: const [
+                  Expanded(
+                      child: GenderButton(
+                          isSelected: true,
+                          icon: FontAwesomeIcons.mars,
+                          label: 'MALE')),
+                  Expanded(
+                      child: GenderButton(
+                          icon: FontAwesomeIcons.venus, label: 'FEMALE')),
+                ],
+              ),
             ),
-          ),
-          const Expanded(child: CustomCard()),
-          Expanded(
-            child: Row(
-              children: const [
-                Expanded(child: CustomCard()),
-                Expanded(child: CustomCard()),
-              ],
+            const Expanded(child: CustomCard()),
+            Expanded(
+              child: Row(
+                children: const [
+                  Expanded(child: CustomCard()),
+                  Expanded(child: CustomCard()),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       floatingActionButton:
           FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add)),
