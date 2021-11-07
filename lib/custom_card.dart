@@ -4,12 +4,14 @@ class CustomCard extends StatelessWidget {
   final Color? color;
   final Widget? child;
   final EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? padding;
 
   const CustomCard({
     Key? key,
     this.color,
     this.child,
     this.margin,
+    this.padding,
   }) : super(key: key);
 
   @override
@@ -19,6 +21,7 @@ class CustomCard extends StatelessWidget {
       margin: margin ??
           EdgeInsets.symmetric(
               horizontal: context.dp(4), vertical: context.dp(12)),
+      padding: padding,
       decoration: BoxDecoration(
           color: color ?? context.background,
           borderRadius: BorderRadius.circular(10)),
