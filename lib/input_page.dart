@@ -12,6 +12,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender _selectedGender = Gender.male;
   int _height = 160;
+  int _weight = 60;
+  int _age = 20;
 
   @override
   void setState(VoidCallback fn) => (mounted) ? super.setState(fn) : fn();
@@ -43,35 +45,21 @@ class _InputPageState extends State<InputPage> {
                     child: Row(
                       children: [
                         Expanded(
-                          child: CustomCard(
-                            padding: EdgeInsets.all(context.dp(12)),
-                            child: FittedBox(
-                              child: Column(
-                                children: [
-                                  Text('WEIGHT',
-                                      textScaleFactor: context.ts,
-                                      style: context.text.subtitle1),
-                                  Text('60',
-                                      textScaleFactor: context.ts,
-                                      style: context.text.headline2),
-                                  Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        CircleIconButton(
-                                            icon: FontAwesomeIcons.minus,
-                                            onPressed: () {}),
-                                        SizedBox(width: context.dp(10)),
-                                        CircleIconButton(
-                                            icon: FontAwesomeIcons.plus,
-                                            onPressed: () {}),
-                                      ]),
-                                ],
-                              ),
-                            ),
+                          child: CounterCard(
+                            label: 'WEIGHT',
+                            value: _weight,
+                            onDecrement: () {},
+                            onIncrement: () {},
                           ),
                         ),
-                        const Expanded(child: CustomCard()),
+                        Expanded(
+                          child: CounterCard(
+                            label: 'AGE',
+                            value: _age,
+                            onDecrement: () {},
+                            onIncrement: () {},
+                          ),
+                        ),
                       ],
                     ),
                   ),
