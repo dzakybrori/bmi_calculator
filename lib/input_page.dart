@@ -35,34 +35,15 @@ class _InputPageState extends State<InputPage> {
         children: [
           Expanded(
             child: Padding(
-              padding: EdgeInsets.all(context.dp(18)),
+              padding: EdgeInsets.only(
+                  right: context.dp(18),
+                  left: context.dp(18),
+                  bottom: context.dp(18)),
               child: Column(
                 children: [
                   _buildGenderSection(),
                   _buildHeightSection(context),
-                  Expanded(
-                    flex: 9,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: CounterCard(
-                            label: 'WEIGHT',
-                            value: _weight,
-                            onDecrement: () {},
-                            onIncrement: () {},
-                          ),
-                        ),
-                        Expanded(
-                          child: CounterCard(
-                            label: 'AGE',
-                            value: _age,
-                            onDecrement: () {},
-                            onIncrement: () {},
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  _buildWeightAndAgeSection(),
                 ],
               ),
             ),
@@ -74,6 +55,32 @@ class _InputPageState extends State<InputPage> {
                   onPressed: () {},
                   child:
                       Text('CALCULATE YOUR BMI', textScaleFactor: context.ts)))
+        ],
+      ),
+    );
+  }
+
+  Expanded _buildWeightAndAgeSection() {
+    return Expanded(
+      flex: 9,
+      child: Row(
+        children: [
+          Expanded(
+            child: CounterCard(
+              label: 'WEIGHT',
+              value: _weight,
+              onDecrement: () => setState(() => _weight--),
+              onIncrement: () => setState(() => _weight++),
+            ),
+          ),
+          Expanded(
+            child: CounterCard(
+              label: 'AGE',
+              value: _age,
+              onDecrement: () => setState(() => _age--),
+              onIncrement: () => setState(() => _age++),
+            ),
+          ),
         ],
       ),
     );
