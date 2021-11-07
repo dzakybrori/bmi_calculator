@@ -21,7 +21,9 @@ class _InputPageState extends State<InputPage> {
               children: const [
                 Expanded(
                     child: GenderButton(
-                        icon: FontAwesomeIcons.mars, label: 'MALE')),
+                        isSelected: true,
+                        icon: FontAwesomeIcons.mars,
+                        label: 'MALE')),
                 Expanded(
                     child: GenderButton(
                         icon: FontAwesomeIcons.venus, label: 'FEMALE')),

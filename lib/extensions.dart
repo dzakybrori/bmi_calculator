@@ -30,7 +30,7 @@ extension ScreenUtil on BuildContext {
   TextTheme get text => Theme.of(this).textTheme;
   Color get primaryColor => Theme.of(this).colorScheme.primary;
   Color get secondaryColor => Theme.of(this).colorScheme.secondary;
-  Color get secondaryVariant => Theme.of(this).colorScheme.secondaryVariant;
+  Color get focusColor => Theme.of(this).focusColor;
   Color get hintColor => Theme.of(this).hintColor;
   Color get disableColor => Theme.of(this).disabledColor;
 
