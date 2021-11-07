@@ -10,15 +10,16 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Gender selectedGender = Gender.male;
+  Gender _selectedGender = Gender.male;
+  int _height = 160;
 
   @override
   void setState(VoidCallback fn) => (mounted) ? super.setState(fn) : fn();
 
   void toggleSelectedGender(Gender gender) {
-    if (gender != selectedGender) {
-      setState(() => selectedGender =
-          (selectedGender == Gender.male) ? Gender.female : Gender.male);
+    if (gender != _selectedGender) {
+      setState(() => _selectedGender =
+          (_selectedGender == Gender.male) ? Gender.female : Gender.male);
     }
   }
 
@@ -35,27 +36,10 @@ class _InputPageState extends State<InputPage> {
               padding: EdgeInsets.all(context.dp(18)),
               child: Column(
                 children: [
+                  _buildGenderSection(),
+                  _buildHeightSection(context),
                   Expanded(
-                    child: Row(
-                      children: [
-                        Expanded(
-                            child: GenderButton(
-                                onTap: () => toggleSelectedGender(Gender.male),
-                                isSelected: selectedGender == Gender.male,
-                                icon: FontAwesomeIcons.mars,
-                                label: 'MALE')),
-                        Expanded(
-                            child: GenderButton(
-                                onTap: () =>
-                                    toggleSelectedGender(Gender.female),
-                                isSelected: selectedGender == Gender.female,
-                                icon: FontAwesomeIcons.venus,
-                                label: 'FEMALE')),
-                      ],
-                    ),
-                  ),
-                  const Expanded(child: CustomCard()),
-                  Expanded(
+                    flex: 9,
                     child: Row(
                       children: const [
                         Expanded(child: CustomCard()),
@@ -74,6 +58,65 @@ class _InputPageState extends State<InputPage> {
                   onPressed: () {},
                   child:
                       Text('CALCULATE YOUR BMI', textScaleFactor: context.ts)))
+        ],
+      ),
+    );
+  }
+
+  Expanded _buildHeightSection(BuildContext context) {
+    return Expanded(
+                  flex: 10,
+                  child: CustomCard(
+                    padding: EdgeInsets.all(context.dp(12)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('HEIGHT',
+                            textScaleFactor: context.ts,
+                            style: context.text.subtitle1),
+                        RichText(
+                          text: TextSpan(
+                              text: '$_height',
+                              children: [
+                                TextSpan(
+                                    text: '\tcm',
+                                    style: context.text.subtitle1)
+                              ],
+                              style: context.text.headline2
+                                  ?.copyWith(fontWeight: FontWeight.w800)),
+                          textScaleFactor: context.ts,
+                          maxLines: 1,
+                        ),
+                        Slider(
+                          value: _height.toDouble(),
+                          min: 130.0,
+                          max: 220.0,
+                          onChanged: (value) =>
+                              setState(() => _height = value.round()),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+  }
+
+  Expanded _buildGenderSection() {
+    return Expanded(
+      flex: 9,
+      child: Row(
+        children: [
+          Expanded(
+              child: GenderButton(
+                  onTap: () => toggleSelectedGender(Gender.male),
+                  isSelected: _selectedGender == Gender.male,
+                  icon: FontAwesomeIcons.mars,
+                  label: 'MALE')),
+          Expanded(
+              child: GenderButton(
+                  onTap: () => toggleSelectedGender(Gender.female),
+                  isSelected: _selectedGender == Gender.female,
+                  icon: FontAwesomeIcons.venus,
+                  label: 'FEMALE')),
         ],
       ),
     );

@@ -20,7 +20,7 @@ class CustomCard extends StatelessWidget {
       alignment: Alignment.center,
       margin: margin ??
           EdgeInsets.symmetric(
-              horizontal: context.dp(4), vertical: context.dp(12)),
+              horizontal: context.dp(4), vertical: context.dp(8)),
       padding: padding,
       decoration: BoxDecoration(
           color: color ?? context.background,
