@@ -1,5 +1,7 @@
 part of 'wrapper.dart';
 
+enum Gender { male, female }
+
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
 
@@ -8,15 +10,16 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  int selectedGender = 1;
+  Gender selectedGender = Gender.male;
 
   @override
   void setState(VoidCallback fn) => (mounted) ? super.setState(fn) : fn();
 
-  void toggleSelectedGender(int gender) {
+  void toggleSelectedGender(Gender gender) {
     // gender 1 is male and 2 is female
     if (gender != selectedGender) {
-      setState(() => selectedGender = (selectedGender == 1) ? 2 : 1);
+      setState(() => selectedGender =
+          (selectedGender == Gender.male) ? Gender.female : Gender.male);
     }
   }
 
@@ -38,14 +41,15 @@ class _InputPageState extends State<InputPage> {
                       children: [
                         Expanded(
                             child: GenderButton(
-                                onTap: () => toggleSelectedGender(1),
-                                isSelected: selectedGender == 1,
+                                onTap: () => toggleSelectedGender(Gender.male),
+                                isSelected: selectedGender == Gender.male,
                                 icon: FontAwesomeIcons.mars,
                                 label: 'MALE')),
                         Expanded(
                             child: GenderButton(
-                                onTap: () => toggleSelectedGender(2),
-                                isSelected: selectedGender == 2,
+                                onTap: () =>
+                                    toggleSelectedGender(Gender.female),
+                                isSelected: selectedGender == Gender.female,
                                 icon: FontAwesomeIcons.venus,
                                 label: 'FEMALE')),
                       ],
