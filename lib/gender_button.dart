@@ -19,20 +19,21 @@ class GenderButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       child: CustomCard(
         color: isSelected ? context.focusColor : context.disableColor,
-        child: InkWell(
-          onTap: () {},
-          borderRadius: BorderRadius.circular(10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(icon, size: context.dp(80)),
-              SizedBox(height: context.dp(15)),
-              Text(label,
-                  style:
-                      const TextStyle(fontSize: 18, color: Color(0xFF8D8E98)),
-                  textScaleFactor: context.ts),
-            ],
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon,
+                color: isSelected
+                    ? Colors.white.withOpacity(0.89)
+                    : Colors.white70,
+                size: context.dp(80)),
+            SizedBox(height: context.dp(15)),
+            Text(label,
+                style: TextStyle(
+                    fontSize: 18,
+                    color: isSelected ? Colors.white54 : Colors.white30),
+                textScaleFactor: context.ts),
+          ],
         ),
       ),
     );
