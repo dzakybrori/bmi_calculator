@@ -27,7 +27,17 @@ class BMICalculator extends StatelessWidget {
               surface: const Color(0xFF0B1033), // AppBarColor
             ),
         elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(primary: const Color(0xFFFF0067))),
+            style: ElevatedButton.styleFrom(
+                primary: const Color(0xFFFF0067),
+                textStyle: const TextStyle(fontSize: 16, letterSpacing: 1))),
+        textTheme: ThemeData.dark().textTheme.copyWith(
+              headline6: ThemeData.dark()
+                  .textTheme
+                  .headline6
+                  ?.copyWith(letterSpacing: 0.4),
+              button:
+                  ThemeData.dark().textTheme.button?.copyWith(letterSpacing: 1),
+            ),
       ),
       home: const InputPage(),
     );

@@ -26,42 +26,53 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
           centerTitle: true,
           title: Text('BMI CALCULATOR', textScaleFactor: context.ts)),
-      body: Padding(
-        padding: EdgeInsets.all(context.dp(18)),
-        child: Column(
-          children: [
-            Expanded(
-              child: Row(
+      body: Column(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.all(context.dp(18)),
+              child: Column(
                 children: [
                   Expanded(
-                      child: GenderButton(
-                          onTap: () => toggleSelectedGender(1),
-                          isSelected: selectedGender == 1,
-                          icon: FontAwesomeIcons.mars,
-                          label: 'MALE')),
+                    child: Row(
+                      children: [
+                        Expanded(
+                            child: GenderButton(
+                                onTap: () => toggleSelectedGender(1),
+                                isSelected: selectedGender == 1,
+                                icon: FontAwesomeIcons.mars,
+                                label: 'MALE')),
+                        Expanded(
+                            child: GenderButton(
+                                onTap: () => toggleSelectedGender(2),
+                                isSelected: selectedGender == 2,
+                                icon: FontAwesomeIcons.venus,
+                                label: 'FEMALE')),
+                      ],
+                    ),
+                  ),
+                  const Expanded(child: CustomCard()),
                   Expanded(
-                      child: GenderButton(
-                          onTap: () => toggleSelectedGender(2),
-                          isSelected: selectedGender == 2,
-                          icon: FontAwesomeIcons.venus,
-                          label: 'FEMALE')),
+                    child: Row(
+                      children: const [
+                        Expanded(child: CustomCard()),
+                        Expanded(child: CustomCard()),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
-            const Expanded(child: CustomCard()),
-            Expanded(
-              child: Row(
-                children: const [
-                  Expanded(child: CustomCard()),
-                  Expanded(child: CustomCard()),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+          SizedBox(
+              width: double.infinity,
+              height: context.h(80),
+              child: ElevatedButton(
+                  onPressed: () {},
+                  child:
+                      Text('CALCULATE YOUR BMI', textScaleFactor: context.ts)))
+        ],
       ),
-      floatingActionButton:
-          FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add)),
     );
   }
 }
