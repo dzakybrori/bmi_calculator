@@ -1,4 +1,4 @@
-part of 'wrapper.dart';
+part of 'components.dart';
 
 class CustomCard extends StatelessWidget {
   final Color? color;

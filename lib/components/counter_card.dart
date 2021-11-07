@@ -1,4 +1,4 @@
-part of 'wrapper.dart';
+part of 'components.dart';
 
 class CounterCard extends StatelessWidget {
   final String label;
@@ -20,6 +20,7 @@ class CounterCard extends StatelessWidget {
       padding: EdgeInsets.all(context.dp(12)),
       child: FittedBox(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(label,
                 textScaleFactor: context.ts, style: context.text.subtitle1),

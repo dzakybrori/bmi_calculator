@@ -1,4 +1,4 @@
-part of 'wrapper.dart';
+part of 'components.dart';
 
 class CircleIconButton extends StatelessWidget {
   final IconData icon;
