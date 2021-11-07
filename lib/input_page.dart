@@ -65,39 +65,35 @@ class _InputPageState extends State<InputPage> {
 
   Expanded _buildHeightSection(BuildContext context) {
     return Expanded(
-                  flex: 10,
-                  child: CustomCard(
-                    padding: EdgeInsets.all(context.dp(12)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('HEIGHT',
-                            textScaleFactor: context.ts,
-                            style: context.text.subtitle1),
-                        RichText(
-                          text: TextSpan(
-                              text: '$_height',
-                              children: [
-                                TextSpan(
-                                    text: '\tcm',
-                                    style: context.text.subtitle1)
-                              ],
-                              style: context.text.headline2
-                                  ?.copyWith(fontWeight: FontWeight.w800)),
-                          textScaleFactor: context.ts,
-                          maxLines: 1,
-                        ),
-                        Slider(
-                          value: _height.toDouble(),
-                          min: 130.0,
-                          max: 220.0,
-                          onChanged: (value) =>
-                              setState(() => _height = value.round()),
-                        )
-                      ],
-                    ),
-                  ),
-                );
+      flex: 10,
+      child: CustomCard(
+        padding: EdgeInsets.all(context.dp(12)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('HEIGHT',
+                textScaleFactor: context.ts, style: context.text.subtitle1),
+            RichText(
+              text: TextSpan(
+                  text: '$_height',
+                  children: [
+                    TextSpan(text: '\tcm', style: context.text.subtitle1)
+                  ],
+                  style: context.text.headline2
+                      ?.copyWith(fontWeight: FontWeight.w800)),
+              textScaleFactor: context.ts,
+              maxLines: 1,
+            ),
+            Slider(
+              value: _height.toDouble(),
+              min: 130.0,
+              max: 220.0,
+              onChanged: (value) => setState(() => _height = value.round()),
+            )
+          ],
+        ),
+      ),
+    );
   }
 
   Expanded _buildGenderSection() {
