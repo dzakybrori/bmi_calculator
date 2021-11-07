@@ -31,6 +31,8 @@ class BMICalculator extends StatelessWidget {
               activeTrackColor: Colors.white,
               inactiveTrackColor: Colors.white.withOpacity(0.15),
               trackHeight: 1.0,
+              thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10),
+              overlayColor: const Color(0xFFFF0067).withOpacity(0.3),
               overlayShape: const RoundSliderOverlayShape(overlayRadius: 18.0),
             ),
         elevatedButtonTheme: ElevatedButtonThemeData(
