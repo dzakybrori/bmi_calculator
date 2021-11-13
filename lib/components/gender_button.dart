@@ -32,7 +32,7 @@ class GenderButton extends StatelessWidget {
                   color: isSelected
                       ? Colors.white.withOpacity(0.89)
                       : Colors.white60,
-                  size: context.h(80)),
+                  size: context.isLandscape ? context.dp(60) : context.h(80)),
               SizedBox(height: context.dp(15)),
               Text(label,
                   style: context.text.subtitle1?.copyWith(
