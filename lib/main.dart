@@ -39,31 +39,31 @@ class BMICalculator extends StatelessWidget {
             ),
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
-                primary: const Color(0xFFFF0067),
+                backgroundColor: const Color(0xFFFF0067),
                 textStyle: const TextStyle(fontSize: 16, letterSpacing: 1))),
         textTheme: ThemeData.dark().textTheme.copyWith(
-              headline1: ThemeData.dark().textTheme.headline1?.copyWith(
+              displayLarge: ThemeData.dark().textTheme.displayLarge?.copyWith(
                     fontSize: 90,
                     fontWeight: FontWeight.bold,
                     color: Colors.white.withOpacity(0.9),
                   ),
-              headline2: ThemeData.dark().textTheme.headline2?.copyWith(
+              displayMedium: ThemeData.dark().textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w900,
                   color: Colors.white.withOpacity(0.9)),
-              headline3: ThemeData.dark().textTheme.headline3?.copyWith(
+              displaySmall: ThemeData.dark().textTheme.displaySmall?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.white.withOpacity(0.9)),
-              headline6: ThemeData.dark()
+              titleLarge: ThemeData.dark()
                   .textTheme
-                  .headline6
+                  .titleLarge
                   ?.copyWith(fontSize: 18, letterSpacing: 0.5),
-              subtitle1: const TextStyle(
+              titleMedium: const TextStyle(
                   fontSize: 16,
                   color: Colors.white54,
                   fontWeight: FontWeight.w500,
                   letterSpacing: 0.5),
-              button:
-                  ThemeData.dark().textTheme.button?.copyWith(letterSpacing: 1),
+              labelLarge:
+                  ThemeData.dark().textTheme.labelLarge?.copyWith(letterSpacing: 1),
             ),
       ),
       home: const InputPage(),
